@@ -1,6 +1,4 @@
 function [Pnoised, Qnoised]=addNoise(P,Q,SNRdB)
-
-  %This function represents the quantum channel, it adds a gaussian noise with a given Signal-to-Noise Ratio (input is in dB)
   n=length(P);
   mu=0;
   SNR=10^(SNRdB/10);
