@@ -18,13 +18,23 @@ main_CV_recon is the protocol one should use with a gaussian modulation
 The other  files are utilitary functions called in the mains :
 
 -generateRA generates a matrix in the Repeat-Accumulate form (the right part is a double diagonal matrix) and the left part is composed of random ones, with a fixed amount per column.
+
 -generateRA_NonRandom generates the RA matrix stored in DVB_S2_110.mat
+
 -DVB_S2_110.mat is the 1/10 rate RA matrix used in https://arxiv.org/pdf/1510.03510.pdf to perform the reconciliation, and it is the best one I have used.
+
 -RA_n6000_R150.mat is a 1/50 rate RA matrix that I generated randomly, it is highly inefficient but is used in the main_DV_split.m. The rate 1/50 is the rate that might be used with a SNR under -10dB (The shannon capacity of a BSC channnel with more than 40% errors is around 0.025 and the code rate has to be lower than that)
+
 -LDPC_expender is a function that takes the base matrix of a Quasi-Cyclic LDPC (https://arxiv.org/abs/1702.07740) and returns the corresponding QC LDPC matrix. These LDPC matrices seem interesting to use for CV-QKD, but I did not design an effective one.
+
 -generatePrototype generates a random base matrix for a QC LDPC, in systematic form (the right part is just the identity matrix)
+
 -addNoise adds the gaussian noise that emulates the quantum channel
+
 -belief_propagation_CV/DV is the belief propagation algorithm used by Alice to guess Bob's key, one is for Discrete Variable (or a discrete modulation such as QPSK) and the other for the gaussian modulation, both algorithms were described by Mario Milicevic in his PhD thesis.
+
 -bits2quad and quad2bits computes the QPSK modulation, from bits to quadratures and from quadratures to bits.
+
 -findDifferences just gives the number of differences between two character strings
+
 -s2tab and tab2s convert 0 and 1 strings to arrays of 0 and 1, I just made it to be able print the keys as strings, which is prettier. Working all the way with arrays is perfectly fine.
